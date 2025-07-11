@@ -1,0 +1,75 @@
+# MCP SSE 服务器配置文件示例
+# 复制此文件为 config.yaml 并根据需要修改
+
+# 服务器基本设置
+server:
+  name: "my_mcp_server"           # 服务器名称
+  host: "localhost"               # 监听主机
+  port: 8000                      # 监听端口
+  version: "1.0.0"                # 服务器版本
+
+# 日志配置
+logging:
+  level: "INFO"                   # 日志级别: DEBUG, INFO, WARNING, ERROR
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: null                      # 日志文件路径，null 表示输出到控制台
+
+# SSE 连接设置
+sse:
+  heartbeat_interval: 30          # 心跳间隔（秒）
+  max_connections: 100            # 最大连接数
+  connection_timeout: 300         # 连接超时（秒）
+
+# CORS 设置
+cors:
+  allow_origins: "*"              # 允许的来源
+  allow_methods: ["GET", "POST", "OPTIONS"]
+  allow_headers: "*"
+  allow_credentials: true
+
+# 工具配置
+tools:
+  - name: "example_tool"
+    enabled: true
+    description: "示例工具"
+    timeout: 30                   # 工具执行超时（秒）
+  
+  # 可以添加更多工具配置
+
+# 认证设置（可选）
+auth:
+  enabled: false                  # 是否启用认证
+  type: "bearer"                  # 认证类型: bearer, basic, custom
+  secret_key: "your-secret-key"   # 密钥
+  token_expiry: 3600              # 令牌过期时间（秒）
+
+# 数据库设置（可选）
+database:
+  enabled: false                  # 是否启用数据库
+  type: "sqlite"                  # 数据库类型: sqlite, mysql, postgresql
+  url: "sqlite:///server_data.db" # 数据库连接URL
+  
+# 监控和指标（可选）
+monitoring:
+  enabled: false                  # 是否启用监控
+  metrics_endpoint: "/metrics"    # 指标端点
+  health_check: true              # 是否启用健康检查
+
+# 缓存设置（可选）
+cache:
+  enabled: false                  # 是否启用缓存
+  type: "memory"                  # 缓存类型: memory, redis
+  ttl: 300                        # 缓存过期时间（秒）
+  max_size: 1000                  # 最大缓存项数
+
+# 速率限制（可选）
+rate_limit:
+  enabled: false                  # 是否启用速率限制
+  requests_per_minute: 60         # 每分钟最大请求数
+  burst_size: 10                  # 突发请求数
+
+# 开发模式设置
+development:
+  debug: false                    # 调试模式
+  hot_reload: false               # 热重载
+  auto_restart: false             # 自动重启 

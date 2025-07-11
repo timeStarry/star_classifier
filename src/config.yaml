@@ -1,0 +1,61 @@
+# GitHub Star Classifier 配置文件
+
+# 服务器配置
+server:
+  name: "github_star_classifier"
+  host: "localhost"
+  port: 38000
+  version: "1.0.0"
+
+# GitHub API 配置
+github:
+  # 你的GitHub Personal Access Token
+  # 创建token: https://github.com/settings/tokens
+  # 需要的权限：public_repo (读取公共仓库) 和 user (访问用户信息)
+  # 如果需要加star/取消star功能，还需要：repo (仓库完整权限)
+  token: ""  # 请在此处填入你的GitHub token，或使用环境变量 GITHUB_TOKEN
+  
+  # API请求配置
+  timeout: 30  # 请求超时时间（秒）
+  rate_limit_delay: 1  # 请求间隔时间（秒）
+  max_retries: 3  # 最大重试次数
+
+# 日志配置
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: null  # 如果指定文件路径，日志将写入文件；null表示只输出到控制台
+
+# 工具配置
+tools:
+  # 每页默认返回的仓库数量
+  default_per_page: 30
+  
+  # 单次查询最大仓库数量
+  max_per_page: 100
+  
+  # 搜索和统计时的最大仓库数量（防止无限循环）
+  max_repos_for_analysis: 1000
+  
+  # 是否启用各个工具
+  enabled_tools:
+    get_user_starred_repos: true
+    search_starred_repos: true
+    get_repo_info: true
+    check_if_starred: true  # 需要token
+    star_repo: true  # 需要token
+    unstar_repo: true  # 需要token
+    get_starred_stats: true
+    get_repo_languages: true
+
+# CORS配置
+cors:
+  allowed_origins: ["*"]
+  allowed_methods: ["GET", "POST", "OPTIONS"]
+  allowed_headers: ["*"]
+
+# 缓存配置（可选，未来扩展）
+cache:
+  enabled: false
+  ttl: 300  # 缓存时间（秒）
+  max_size: 1000  # 最大缓存项数 

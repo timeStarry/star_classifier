@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "star_classifier_demo": {
+      "type": "sse",
+      "url": "http://localhost:8000/sse"
+    },
+    "github_star_classifier": {
+      "type": "sse",
+      "url": "http://localhost:38000/sse"
+    }
+  }
+}
