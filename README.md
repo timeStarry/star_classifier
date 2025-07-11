@@ -45,7 +45,7 @@ pip install -r requirements.txt
 
 2. **配置GitHub Token**
 ```bash
-# 创建token文件（可选，但强烈建议）
+# 创建token文件（让本地LLM读取）
 echo "your_github_token_here" > starring_accessed_token
 ```
 
